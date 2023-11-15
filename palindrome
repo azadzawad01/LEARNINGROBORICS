@@ -1,0 +1,38 @@
+const int maxLength = 50; // Maximum length of the input string
+
+void setup() {
+  Serial.begin(9600);
+
+  // Test the palindrome function with different strings
+  checkPalindrome("radar");
+  checkPalindrome("hello");
+  checkPalindrome("level");
+}
+
+void loop() {
+  // Nothing to do here for this example
+}
+
+bool isPalindrome(String str) {
+  int length = str.length();
+  
+  for (int i = 0; i < length / 2; i++) {
+    if (str.charAt(i) != str.charAt(length - 1 - i)) {
+      return false;
+    }
+  }
+  
+  return true;
+}
+
+void checkPalindrome(String str) {
+  Serial.print("Checking if '");
+  Serial.print(str);
+  Serial.print("' is a palindrome: ");
+  
+  if (isPalindrome(str)) {
+    Serial.println("Yes");
+  } else {
+    Serial.println("No");
+  }
+}
