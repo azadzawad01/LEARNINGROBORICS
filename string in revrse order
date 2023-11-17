@@ -1,0 +1,30 @@
+//Arduino sketch that reads a string from the serial monitor and prints it in
+reverse order.
+void setup() {
+  Serial.begin(9600);  // Set the baud rate to 9600 bps
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    // Read the input string from the serial monitor
+    String inputString = Serial.readString();
+    
+    // Print the original string
+    Serial.print("Original String: ");
+    Serial.println(inputString);
+
+    // Print the string in reverse order
+    Serial.print("Reversed String: ");
+    printReverse(inputString);
+  }
+}
+
+void printReverse(String str) {
+  // Iterate through the string in reverse order and print each character
+  for (int i = str.length() - 1; i >= 0; i--) {
+    Serial.print(str[i]);
+  }
+  
+  // Print a newline character for better readability
+  Serial.println();
+}
