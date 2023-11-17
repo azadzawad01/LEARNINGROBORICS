@@ -1,0 +1,35 @@
+// Arduino sketch to count the number of vowels in a given string.
+void setup() {
+  Serial.begin(9600);  // Set the baud rate to 9600 bps
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    // Read the input string from the serial monitor
+    String inputString = Serial.readString();
+    
+    // Print the original string
+    Serial.print("Original String: ");
+    Serial.println(inputString);
+
+    // Count and print the number of vowels in the string
+    int vowelCount = countVowels(inputString);
+    Serial.print("Number of vowels: ");
+    Serial.println(vowelCount);
+  }
+}
+
+int countVowels(String str) {
+  int count = 0;
+
+  // Iterate through each character in the string
+  for (int i = 0; i < str.length(); i++) {
+    // Check if the current character is a vowel (case-insensitive)
+    char currentChar = toLowerCase(str[i]);
+    if (currentChar == 'a' || currentChar == 'e' || currentChar == 'i' || currentChar == 'o' || currentChar == 'u') {
+      count++;
+    }
+  }
+
+  return count;
+}
